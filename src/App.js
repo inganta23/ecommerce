@@ -18,7 +18,6 @@ import { setDataBlogs, setLoadingBlogs } from "./redux/blogRedux";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  // localStorage.clear();
   const { data, loading } = useQueryBarang();
   const { data: dataCart, loading: loadingCart } = useQueryCart();
   const { data: dataFav, loading: loadingFav } = useQueryFavourite();
@@ -35,7 +34,18 @@ function App() {
       dispatch(setLoadingBlogs(true));
       try {
         const { data: response } = await axios.get(
-          "https://newsapi.org/v2/everything?q=reforestation&from=2022-04-20&sortBy=publishedAt&apiKey=329d65419a024a4d9485c4f6137051ec"
+          "https://free-news.p.rapidapi.com/v1/search",
+          {
+            params: {
+              q: "Nature",
+              lang: "en",
+            },
+            headers: {
+              "X-RapidAPI-Key":
+                "19469e81e7msh457cf9e13a26d9bp1a3806jsn5bb2191495bd",
+              "X-RapidAPI-Host": "free-news.p.rapidapi.com",
+            },
+          }
         );
         dispatch(setDataBlogs(response.articles));
       } catch (error) {
@@ -59,7 +69,6 @@ function App() {
         <p>Loading</p>
       </div>
     );
-
   //Get Total Biaya
   let totalBiaya = 0;
   const biaya = dataCart.kampus_merdeka_cart.map(

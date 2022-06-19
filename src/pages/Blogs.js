@@ -32,12 +32,12 @@ const Blogs = ({ blogs, totalPosts }) => {
                 <img
                   style={{ maxHeight: "300px" }}
                   className="img-fluid img-thumbnail rounded"
-                  src={blog.urlToImage}
+                  src={blog.media}
                   alt="Blog"
                 />
                 <div className="card-body px-0">
                   <h4 className="card-title">{blog.title}</h4>
-                  <p className="card-text mt-3 text-muted">{blog.content}</p>
+                  <p className="card-text mt-3 text-muted">{blog.summary}</p>
                   <p className="card-text">
                     <small className="text-muted">
                       <span className="fw-bold">Author: </span>
@@ -45,7 +45,7 @@ const Blogs = ({ blogs, totalPosts }) => {
                     </small>
                   </p>
                   <a
-                    href={blog.url}
+                    href={blog.link}
                     target="_blank"
                     rel="noreferrer"
                     className="btn"
